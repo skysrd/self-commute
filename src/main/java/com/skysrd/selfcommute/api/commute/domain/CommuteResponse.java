@@ -4,21 +4,22 @@ import lombok.Getter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Getter
-public class CommuteReseponse {
+public class CommuteResponse {
         private LocalDate date;
         private LocalDateTime startTime;
         private LocalDateTime endTime;
-        private LocalDateTime workTime;
+        private LocalTime workTime;
 
-        public CommuteResponse of(Commute commute) {
+        public static CommuteResponse of(Commute commute) {
             CommuteResponse response = new CommuteResponse();
             response.date = commute.getStartTime().toLocalDate();
             response.startTime = commute.getStartTime();
             response.endTime = commute.getEndTime();
-            response.workTime = commute.getEndTime().minusHours(commute.getStartTime().getHour()).minusMinutes(commute.getStartTime().getMinute());
+            response.workTime = commute.getTotalTime();
             return response;
         }
-    
+
 }

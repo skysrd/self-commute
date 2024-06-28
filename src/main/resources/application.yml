@@ -1,1 +1,12 @@
-spring.application.name=self-commute
+spring:
+  application:
+  name: self-commute
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    url: jdbc:h2:mem:commute
+    username: manager
+    password: skysrd
+    driver-class-name: org.h2.Driver
